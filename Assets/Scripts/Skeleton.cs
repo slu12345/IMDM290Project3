@@ -13,7 +13,6 @@ using UnityEngine;
 public class Skeleton : MonoBehaviour
 {
     public GameObject obj;
-
     // List pairs of landmarks
     int[,] linePairsL = new int[,] { {4,3}, {3,2}, {2,1}, {1,0}, {8,7}, {7,6}, {6,5}, {5,0},
 {12,11}, {11,10}, {10,9}, {16,15}, {15,14}, {14,13},
@@ -114,4 +113,5 @@ public class Skeleton : MonoBehaviour
         }
 
     }
+
 }
