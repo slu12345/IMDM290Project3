@@ -7,6 +7,7 @@
 using Mediapipe.Unity.Holistic;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class Skeleton : MonoBehaviour
@@ -22,7 +23,10 @@ public class Skeleton : MonoBehaviour
 {12,11}, {11,10}, {10,9}, {16,15}, {15,14}, {14,13},
 {20, 19}, {19,18}, {18,17}, {17,0}}; 
     private GameObject[] capsuleContainerL; 
-    private GameObject[] capsuleContainerR; 
+    private GameObject[] capsuleContainerR;
+    public Vector3 rightIdx;
+    public Vector3 rightThumb;
+    private bool isPinched = false;
 
     private void Awake()
     {
@@ -66,10 +70,17 @@ public class Skeleton : MonoBehaviour
     }
     void Update()
     {
+        rightIdx = Gesture.gen.righthandpos[8];
+        rightThumb = Gesture.gen.righthandpos[4];
 
         if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.03f) // if right hand is pinched, do~
         {
+            isPinched= true;
             Debug.Log("Pinched!");
+        } 
+        else
+        {
+            isPinched = false;
         }
         // Lefthand skeleton draw
         for (int i = 0; i < linePairsL.GetLength(0); i++)
