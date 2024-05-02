@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Markup;
 using Microsoft.Win32;*/
+
 using UnityEngine;
 
 public class ScreenDivider1 : MonoBehaviour
@@ -28,11 +29,26 @@ public class ScreenDivider1 : MonoBehaviour
     float sq14;
     float sq15;
     float sq16;
+    
 
     void Start()
     {
+        GameObject obj = GameObject.Find("Wooden Planks");
+
         Camera.main.orthographicSize = Screen.height / 2f;
-        texture = GetComponent<Renderer>().material.mainTexture as Texture2D;
+        SpriteRenderer planks = obj.GetComponent<SpriteRenderer>();//use later
+
+        Sprite origin = planks.sprite;
+
+        Texture2D texture = origin.texture;
+
+        if (texture == null)
+        {
+            Debug.Log("NO SPRITE");
+        } else
+        {
+            Debug.Log("SPRITE FOUND");
+        }
         transform.localScale = new Vector3(texture.width, texture.height, 1);
 
         byte[] pixels = texture.GetRawTextureData();
@@ -45,6 +61,9 @@ public class ScreenDivider1 : MonoBehaviour
             {
                 int pixelIndex = rowOffset + col * 4;
                 sq1 = pixelIndex;
+
+                
+                
             }
 
             for (int col = texture.width / 4; col < texture.width / 2; ++col)
@@ -197,7 +216,7 @@ public class ScreenDivider1 : MonoBehaviour
 
         
 
-        texture.LoadRawTextureData(pixels);
-        texture.Apply();
+       texture.LoadRawTextureData(pixels);
+       texture.Apply();
     }
 }

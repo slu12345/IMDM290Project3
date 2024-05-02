@@ -8,6 +8,7 @@ using Mediapipe.Unity.Holistic;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Dynamic;
 using UnityEngine;
 
 public class Skeleton : MonoBehaviour
@@ -23,8 +24,8 @@ public class Skeleton : MonoBehaviour
 {20, 19}, {19,18}, {18,17}, {17,0}}; 
     private GameObject[] capsuleContainerL; 
     private GameObject[] capsuleContainerR;
-    public Vector3 rightIdx;
-    public Vector3 rightThumb;
+    private Vector3 rightIdx;
+    private Vector3 rightThumb;
     private bool isPinched = false;
 
     private void Awake()
@@ -67,10 +68,30 @@ public class Skeleton : MonoBehaviour
         scaled = new Vector3(-20 * v.x + 10, -15 * v.y + 7, v.z+10);
         return scaled;
     }
+    /*
+    void setRightIdx(Vector3 val)
+    {
+        rightIdx = val;
+    }
+
+    public Vector3 getRightIdx()
+    {
+        return rightIdx;
+    }
+
+    void setRightThumb(Vector3 val)
+    {
+        rightThumb = val;
+    }
+
+    public Vector3 getRightThumb()
+    {
+        return rightThumb;
+    }*/
     void Update()
     {
-        rightIdx = Gesture.gen.righthandpos[8];
-        rightThumb = Gesture.gen.righthandpos[4];
+        /*setRightIdx(Gesture.gen.righthandpos[8]);
+        setRightThumb(Gesture.gen.righthandpos[4]);
 
         if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.03f) // if right hand is pinched, do~
         {
@@ -80,7 +101,7 @@ public class Skeleton : MonoBehaviour
         else
         {
             isPinched = false;
-        }
+        }*/
         // Lefthand skeleton draw
         for (int i = 0; i < linePairsL.GetLength(0); i++)
         {
