@@ -4,10 +4,10 @@
 // This code demonstrates how to use landmarks to draw sets of skeletons on the finger
 // Credit: Silas, Mateo, Sreya, Madeleine Team from IMDM290, 2024
 
-using Mediapipe.Unity.Holistic;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
+// using Mediapipe.Unity.Holistic;
+// using System.Collections;
+// using System.Collections.Generic;
+// using System.Collections.Specialized;
 using UnityEngine;
 
 public class Skeleton : MonoBehaviour
@@ -61,12 +61,12 @@ public class Skeleton : MonoBehaviour
         obj.transform.localScale = new Vector3(distance, fl / 2, distance);
     }
 
-    Vector3 scaleVector(Vector3 v)
-    {
-        Vector3 scaled;
-        scaled = new Vector3(-20 * v.x + 10, -15 * v.y + 7, v.z+10);
-        return scaled;
-    }
+    // Vector3 scaleVector(Vector3 v)
+    // {
+    //     Vector3 scaled;
+    //     scaled = new Vector3(-20 * v.x + 10, -15 * v.y + 7, v.z+10);
+    //     return scaled;
+    // }
     void Update()
     {
         rightIdx = Gesture.gen.righthandpos[8];
