@@ -11,7 +11,7 @@ using System.Collections.Specialized;
 using System.Dynamic;
 using UnityEngine;
 
-public class Skeleton : MonoBehaviour
+public class Skeletonn : MonoBehaviour
 {
     public GameObject obj;
     // List pairs of landmarks

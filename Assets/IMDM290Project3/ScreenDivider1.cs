@@ -42,7 +42,7 @@ public class ScreenDivider1 : MonoBehaviour
         objects[1] = new Vector2(1f, -1.14f); // bone 
 
 
-        GameObject obj = GameObject.Find("Wooden Planks");
+        GameObject obj = GameObject.Find("PlayableArea");
 
         Camera.main.orthographicSize = Screen.height / 2f;
         SpriteRenderer planks = obj.GetComponent<SpriteRenderer>();//use later
