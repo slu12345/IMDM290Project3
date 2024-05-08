@@ -45,7 +45,7 @@ public class Interaction : MonoBehaviour
         leftIdx = Gesture.gen.lefthandpos[8];
         leftThumb = Gesture.gen.lefthandpos[4];
 
-        
+
         //Debug.Log(rightIdx);
         //Debug.Log(rightThumb);
 
@@ -62,18 +62,68 @@ public class Interaction : MonoBehaviour
 
 
         //if (index)
+
+        GameObject.Find("objects");
+
         
-        if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.03f) // if right hand is pinched within one of the squares, do~
-        {
+        if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.03f) {
             isPinched = true;
             pinchedPosition = new Vector2(Gesture.gen.righthandpos[8].x, Gesture.gen.righthandpos[8].y);
+
+            //ScreenDivider.gen.objects[];
+
+                if ((pinchedPosition - ScreenDivider1.objects[0]).magnitude < 0.03f)
+            {
+                ScreenDivider1.objects[0] = pinchedPosition;
+
+            }
+
+
             //interact with object;
             //Debug.Log(pinchedPosition);
         }
+        
+
+        else if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.03f){ // if right hand is pinched within one of the squares, do~
+            isPinched = true;
+            pinchedPosition = new Vector2(Gesture.gen.righthandpos[8].x, Gesture.gen.righthandpos[8].y);
+
+            //ScreenDivider.gen.objects[];
+
+            if ((pinchedPosition - ScreenDivider1.objects[1]).magnitude < 0.03f)
+            {
+                ScreenDivider1.objects[1] = pinchedPosition;
+
+            }
+
+
+            //interact with object;
+            //Debug.Log(pinchedPosition);
+        }
+
+        else if((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.03f){  // if right hand is pinched within one of the squares, do~
+       
+            isPinched = true;
+            pinchedPosition = new Vector2(Gesture.gen.righthandpos[8].x, Gesture.gen.righthandpos[8].y);
+
+            //ScreenDivider.gen.objects[];
+
+            if ((pinchedPosition - ScreenDivider1.objects[2]).magnitude < 0.03f)
+            {
+                ScreenDivider1.objects[2] = pinchedPosition;
+
+            }
+
+
+            //interact with object;
+            //Debug.Log(pinchedPosition);
+        }
+
         else
         {
             isPinched = false;
         }
+
 
 
         /*
