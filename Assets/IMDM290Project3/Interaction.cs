@@ -7,10 +7,18 @@ public class Interaction : MonoBehaviour
     private Vector3 rightThumb;
     private Vector3 leftIdx;
     private Vector3 leftThumb;
-
-
+    public Vector2 pinchedPosition;
+    public bool isPinched;
+    public static Interaction interact;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
+    {
+        if (Interaction.interact == null)
+        {
+            Interaction.interact = this;
+        }
+    }
+        void Start()
     {
         /*
         GameObject skelObj = GameObject.Find("Skeleton");
@@ -38,13 +46,13 @@ public class Interaction : MonoBehaviour
         leftThumb = Gesture.gen.lefthandpos[4];
 
         
-        Debug.Log(rightIdx);
-        Debug.Log(rightThumb);
+        //Debug.Log(rightIdx);
+        //Debug.Log(rightThumb);
 
-        Debug.Log("SPlit");
-        Debug.Log(leftIdx);
-        Debug.Log(leftThumb);
-        
+        //Debug.Log("SPlit");
+        //Debug.Log(leftIdx);
+        //Debug.Log(leftThumb);
+
         /*Vector3 index = skel.rightIdx;
         Vector3 thumb = skel.rightThumb;
         Debug.Log(index);
@@ -54,7 +62,18 @@ public class Interaction : MonoBehaviour
 
 
         //if (index)
-
+        
+        if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.03f) // if right hand is pinched within one of the squares, do~
+        {
+            isPinched = true;
+            pinchedPosition = new Vector2(Gesture.gen.righthandpos[8].x, Gesture.gen.righthandpos[8].y);
+            //interact with object;
+            //Debug.Log(pinchedPosition);
+        }
+        else
+        {
+            isPinched = false;
+        }
 
 
         /*

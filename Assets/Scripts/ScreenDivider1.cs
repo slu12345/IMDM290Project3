@@ -4,6 +4,8 @@ using System.Runtime.Remoting.Contexts;
 using System.Windows.Markup;
 using Microsoft.Win32;*/
 
+//using System.Diagnostics;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class ScreenDivider1 : MonoBehaviour
@@ -29,10 +31,17 @@ public class ScreenDivider1 : MonoBehaviour
     float sq14;
     float sq15;
     float sq16;
+    static int numberofObj = 2;
+    Vector2[] objects = new Vector2[numberofObj];
     
 
     void Start()
     {
+        // objects
+        objects[0] = new Vector2(-0.5f, 1.52f); // apple
+        objects[1] = new Vector2(1f, -1.14f); // bone 
+
+
         GameObject obj = GameObject.Find("Wooden Planks");
 
         Camera.main.orthographicSize = Screen.height / 2f;
@@ -218,5 +227,17 @@ public class ScreenDivider1 : MonoBehaviour
 
        texture.LoadRawTextureData(pixels);
        texture.Apply();
+    }
+    void Update()
+    {
+        // call pinch value
+        //Debug.Log(Interaction.interact.pinchedPosition);
+        // collider 
+        for (int i = 0;i < numberofObj;i++) {
+            double dist = (objects[i] - Interaction.interact.pinchedPosition).magnitude;
+            Debug.Log(i + " " + dist);
+
+        }
+
     }
 }
