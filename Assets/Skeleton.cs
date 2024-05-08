@@ -61,12 +61,12 @@ public class Skeleton : MonoBehaviour
         obj.transform.localScale = new Vector3(distance, fl / 2, distance);
     }
 
-    // Vector3 scaleVector(Vector3 v)
-    // {
-    //     Vector3 scaled;
-    //     scaled = new Vector3(-20 * v.x + 10, -15 * v.y + 7, v.z+10);
-    //     return scaled;
-    // }
+     Vector3 scaleVector(Vector3 v)
+     {
+         Vector3 scaled;
+         scaled = new Vector3(-20 * v.x + 10, -15 * v.y + 7, v.z+10);
+         return scaled;
+     }
     void Update()
     {
         rightIdx = Gesture.gen.righthandpos[8];

@@ -31,8 +31,8 @@ public class ScreenDivider1 : MonoBehaviour
     float sq14;
     float sq15;
     float sq16;
-    static int numberofObj = 2;
-    Vector2[] objects = new Vector2[numberofObj];
+    static int numberofObj = 3;
+    public Vector2[] objects = new Vector2[numberofObj];
     
 
     void Start()
@@ -40,6 +40,7 @@ public class ScreenDivider1 : MonoBehaviour
         // objects
         objects[0] = new Vector2(-0.5f, 1.52f); // apple
         objects[1] = new Vector2(1f, -1.14f); // bone 
+        objects[2] = new Vector2(0.54f, 0.47f); // ribs
 
 
         GameObject obj = GameObject.Find("PlayableArea");
