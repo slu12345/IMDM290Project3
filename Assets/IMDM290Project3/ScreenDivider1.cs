@@ -32,15 +32,15 @@ public class ScreenDivider1 : MonoBehaviour
     float sq15;
     float sq16;
     static int numberofObj = 3;
-    public Vector2[] objects = new Vector2[numberofObj];
+    public static Vector2[] objects = new Vector2[numberofObj];
     
 
     void Start()
     {
         // objects
-        objects[0] = new Vector2(-0.5f, 1.52f); // apple
-        objects[1] = new Vector2(1f, -1.14f); // bone 
-        objects[2] = new Vector2(0.54f, 0.47f); // ribs
+        objects[0] = GameObject.Find("bad apple"); // apple
+        objects[1] = GameObject.Find("funny bone"); // bone 
+        objects[2] = GameObject.Find("broken ribs"); // ribs
 
 
         GameObject obj = GameObject.Find("PlayableArea");

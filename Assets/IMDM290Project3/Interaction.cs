@@ -110,7 +110,7 @@ public class Interaction : MonoBehaviour
 
             if ((pinchedPosition - ScreenDivider1.objects[2]).magnitude < 0.03f)
             {
-                ScreenDivider1.Vector2.objects[2] = pinchedPosition;
+                ScreenDivider1.objects[2] = pinchedPosition;
 
             }
 
