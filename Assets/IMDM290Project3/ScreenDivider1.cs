@@ -1,11 +1,5 @@
-/*using System.CodeDom.Compiler;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Contexts;
-using System.Windows.Markup;
-using Microsoft.Win32;*/
 
-//using System.Diagnostics;
-//using System.Diagnostics;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ScreenDivider1 : MonoBehaviour
@@ -34,7 +28,7 @@ public class ScreenDivider1 : MonoBehaviour
     float sq16;
 
     public Vector2[] objects = new Vector2[numberofObj];
-   // public static Vector2[] objects = new Vector2[numberofObj];
+    // public static Vector2[] objects = new Vector2[numberofObj];
 
 
     void Start()
@@ -43,7 +37,7 @@ public class ScreenDivider1 : MonoBehaviour
         objects[0] = new Vector2(-0.5f, 1.52f); // apple
         objects[1] = new Vector2(1f, -1.14f); // bone 
         objects[2] = new Vector2(0.54f, 0.47f); // ribs
-     
+
 
 
         GameObject obj = GameObject.Find("PlayableArea");
@@ -58,7 +52,7 @@ public class ScreenDivider1 : MonoBehaviour
         if (texture == null)
         {
             Debug.Log("NO SPRITE");
-        } 
+        }
         else
         {
             Debug.Log("SPRITE FOUND");
@@ -76,8 +70,8 @@ public class ScreenDivider1 : MonoBehaviour
                 int pixelIndex = rowOffset + col * 4;
                 sq1 = pixelIndex;
 
-                
-                
+
+
             }
 
             for (int col = texture.width / 4; col < texture.width / 2; ++col)
@@ -110,7 +104,7 @@ public class ScreenDivider1 : MonoBehaviour
             for (int col = texture.width / 4; col < texture.width / 2; ++col)
             {
                 int pixelIndex = rowOffset + col * 4;
-                 sq6 = pixelIndex;
+                sq6 = pixelIndex;
             }
 
             for (int col = 3 * texture.width / 4; col < texture.width; ++col)
@@ -121,7 +115,7 @@ public class ScreenDivider1 : MonoBehaviour
             for (int col = texture.width / 2; col < 3 * texture.width / 4; ++col)
             {
                 int pixelIndex = rowOffset + col * 4;
-                 sq8 = pixelIndex;
+                sq8 = pixelIndex;
             }
         }
 
@@ -197,9 +191,9 @@ public class ScreenDivider1 : MonoBehaviour
         values[15] = sq16;
         int holder = 0;
         int hold2 = 0;
-        
-        float[]  temp = new float[0];
-        for ( int i = 0; i < cornerNum; i++)
+
+        float[] temp = new float[0];
+        for (int i = 0; i < cornerNum; i++)
         {
             temp = new float[0];
             //holder = 0;
@@ -213,12 +207,14 @@ public class ScreenDivider1 : MonoBehaviour
             }
             for (int k = 0; k < temp.Length; k++)
             {
-                finalValues[i,hold2] = temp[k];
+                finalValues[i, hold2] = temp[k];
                 hold2++;
                 //smallerSections += 4;
             }
         }
-        
+    }
+}
+
         /*
          * for(int i = 0; i < 4; i ++){
          *  for(int j = 0; j < 4: j ++){
@@ -226,23 +222,137 @@ public class ScreenDivider1 : MonoBehaviour
          *      }
          *       }
          */
-        
 
-        
 
-       texture.LoadRawTextureData(pixels);
-       texture.Apply();
-    }
-    void Update()
-    {
-        // call pinch value
-        //Debug.Log(Interaction.interact.pinchedPosition);
-        // collider 
-        for (int i = 0;i < numberofObj;i++) {
-            double dist = (objects[i] - Interaction.interact.pinchedPosition).magnitude;
-            Debug.Log(i + " " + dist);
 
+        /*
+               texture.LoadRawTextureData(pixels);
+               texture.Apply();
+            }
+            void Update()
+            {
+                // call pinch value
+                //Debug.Log(Interaction.interact.pinchedPosition);
+                // collider 
+                for (int i = 0;i < numberofObj;i++) {
+                    double dist = (objects[i] - Interaction.interact.pinchedPosition).magnitude;
+                    Debug.Log(i + " " + dist);
+
+                }
+
+            }
         }
 
+
+
+        //using System.Diagnostics;
+        using UnityEngine;
+
+public class ScreenDivider1 : MonoBehaviour
+{
+    public GameObject playableArea;
+    private SpriteRenderer spriteRenderer;
+    public Rect[,] sections;
+    const int rows = 4;
+    const int cols = 4;
+    public static int numberofObj = 3;
+    public Vector2[] objects = new Vector2[numberofObj];
+    // public static Vector2[] objects = new Vector2[numberofObj];
+
+
+    void Start()
+    {
+        // objects
+        objects[0] = new Vector2(-0.5f, 1.52f); // apple
+        objects[1] = new Vector2(1f, -1.14f); // bone 
+        objects[2] = new Vector2(0.54f, 0.47f); // ribs
+
+
+        if (playableArea == null)
+        {
+            Debug.LogError("PlayableArea GameObject is not assigned.");
+            return;
+        }
+
+        spriteRenderer = playableArea.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null || spriteRenderer.sprite == null)
+        {
+            Debug.LogError("SpriteRenderer or Sprite is missing.");
+            return;
+        }
+
+        Texture2D texture = spriteRenderer.sprite.texture;
+        if (texture == null)
+        {
+            Debug.LogError("Sprite texture is not accessible.");
+            return;
+        }
+
+        sections = new Rect[rows, cols];
+        float width = spriteRenderer.sprite.rect.width / cols;
+        float height = spriteRenderer.sprite.rect.height / rows;
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                sections[i, j] = new Rect(j * width, i * height, width, height);
+            }
+        }
+    }
+
+    public bool IsPositionInSection(Vector2 position)
+    {
+        Vector2 scale = playableArea.transform.localScale;
+        Vector3 offset = playableArea.transform.position;
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                Vector2 sectionPos = new Vector2(sections[i, j].x, sections[i, j].y) / spriteRenderer.sprite.pixelsPerUnit * scale;
+                Vector2 sectionSize = new Vector2(sections[i, j].width, sections[i, j].height) / spriteRenderer.sprite.pixelsPerUnit * scale;
+                Rect worldSection = new Rect(offset + new Vector3(sectionPos.x, sectionPos.y, 0), sectionSize);
+
+                if (worldSection.Contains(position))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    void OnDrawGizmos()
+    {
+        if (spriteRenderer == null || spriteRenderer.sprite == null)
+        {
+            Debug.Log("SpriteRenderer or sprite is missing.");
+            return;
+        }
+
+        Gizmos.color = Color.yellow;
+
+        Vector2 spriteDimensions = spriteRenderer.sprite.bounds.size;
+        Vector2 gizmoSize = new Vector2(spriteDimensions.x / cols, spriteDimensions.y / rows);
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                Vector2 localPos = new Vector2(j * gizmoSize.x, i * gizmoSize.y) + gizmoSize / 2 - (spriteDimensions / 2);
+                Vector3 worldPos = spriteRenderer.transform.TransformPoint(localPos);
+
+                Gizmos.DrawWireCube(worldPos, new Vector3(gizmoSize.x, gizmoSize.y, 0.01f));
+            }
+        }
     }
 }
+*/
+
+        
+
+
+
+
+

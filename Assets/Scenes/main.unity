@@ -357,6 +357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 0}
+  rightIdx: {x: 0, y: 0, z: 0}
+  rightThumb: {x: 0, y: 0, z: 0}
 --- !u!114 &148021282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,6 +925,8 @@ GameObject:
   m_Component:
   - component: {fileID: 620108643}
   - component: {fileID: 620108642}
+  - component: {fileID: 620108645}
+  - component: {fileID: 620108644}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -998,6 +1002,38 @@ Transform:
   - {fileID: 1972974873}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &620108644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620108641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ec65de204cff645bb5c63c2b6b7c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenDivider: {fileID: 0}
+  pinchedPosition: {x: 0, y: 0}
+  isPinched: 0
+--- !u!114 &620108645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620108641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0f08d03b4082e47b69e1fd47b96633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playableArea: {fileID: 620108641}
+  objects:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
 --- !u!1001 &629162779
 PrefabInstance:
   m_ObjectHideFlags: 0
