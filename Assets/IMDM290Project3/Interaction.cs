@@ -66,15 +66,17 @@ public class Interaction : MonoBehaviour
         GameObject.Find("objects");
 
         
+
         if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.03f) {
             isPinched = true;
             pinchedPosition = new Vector2(Gesture.gen.righthandpos[8].x, Gesture.gen.righthandpos[8].y);
 
             //ScreenDivider.gen.objects[];
 
-                if ((pinchedPosition - ScreenDivider1.objects[0]).magnitude < 0.03f)
+            if ((pinchedPosition - ScreenDivider1.Vector2.objects[0]).magnitude < 0.03f)
             {
-                ScreenDivider1.objects[0] = pinchedPosition;
+                ScreenDivider1.Vector2.objects[0] = pinchedPosition;
+              //  ScreenDivider1.objects[0] = pinchedPosition;
 
             }
 
@@ -90,9 +92,10 @@ public class Interaction : MonoBehaviour
 
             //ScreenDivider.gen.objects[];
 
-            if ((pinchedPosition - ScreenDivider1.objects[1]).magnitude < 0.03f)
+            if ((pinchedPosition - ScreenDivider1.Vector2.objects[1]).magnitude < 0.03f)
             {
-                ScreenDivider1.objects[1] = pinchedPosition;
+                ScreenDivider1.Vector2.objects[1] = pinchedPosition;
+              //  ScreenDivider1.objects[1] = pinchedPosition;
 
             }
 
@@ -108,9 +111,10 @@ public class Interaction : MonoBehaviour
 
             //ScreenDivider.gen.objects[];
 
-            if ((pinchedPosition - ScreenDivider1.objects[2]).magnitude < 0.03f)
+            if ((pinchedPosition - ScreenDivider1.Vector2.objects[2]).magnitude < 0.03f)
             {
-                ScreenDivider1.objects[2] = pinchedPosition;
+                ScreenDivider1.Vector2.objects[2] = pinchedPosition;
+               // ScreenDivider1.objects[2] = pinchedPosition;
 
             }
 
