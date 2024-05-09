@@ -55,7 +55,8 @@ public class ScreenDivider1 : MonoBehaviour
         if (texture == null)
         {
             Debug.Log("NO SPRITE");
-        } else
+        } 
+        else
         {
             Debug.Log("SPRITE FOUND");
         }
