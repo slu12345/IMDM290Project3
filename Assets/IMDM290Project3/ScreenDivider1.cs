@@ -1,5 +1,4 @@
 
-using System.Diagnostics;
 using UnityEngine;
 
 public class ScreenDivider1 : MonoBehaviour
