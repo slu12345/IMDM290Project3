@@ -5,22 +5,22 @@ public class Interaction : MonoBehaviour
     private Skeleton skel;
     private Vector3 rightIdx;
     private Vector3 rightThumb;
-    public Vector2 pinchedPosition;
+    public Vector3 pinchedPosition;
     public bool isPinched = false;
     public static int numberofObj = 3;
-    public Vector2[] objects = new Vector2[numberofObj];
+    public Vector3[] objects = new Vector3[numberofObj];
     public static Interaction interact;
     public GameObject applesprite;
     public GameObject bonesprite;
     public GameObject ribsprite;
 
-    public Vector2 apple;
+    public Vector3 apple;
     float applex;
     float appley;
-    public Vector2 bone;
+    public Vector3 bone;
     float bonex;
     float boney;
-    public Vector2 ribs;
+    public Vector3 ribs;
     float ribsx;
     float ribsy;
     // Start is called before the first frame update
@@ -43,17 +43,17 @@ public class Interaction : MonoBehaviour
         applex = GameObject.Find("bad apple").transform.position.x;
         appley = GameObject.Find("bad apple").transform.position.y;
 
-        apple = new Vector2(applex, appley);
+        apple = new Vector3(applex, appley, 10f);
 
         bonex = GameObject.Find("funny bone").transform.position.x;
         boney = GameObject.Find("funny bone").transform.position.y;
 
-        bone = new Vector2(bonex, boney);
+        bone = new Vector3(bonex, boney, 10f);
 
         ribsx = GameObject.Find("broken ribs").transform.position.x;
         ribsy = GameObject.Find("broken ribs").transform.position.y;
 
-        ribs = new Vector2(ribsx, ribsy);
+        ribs = new Vector3(ribsx, ribsy, 10f);
 
         objects[0] = apple; // apple
         objects[1] = bone; // bone 
@@ -80,30 +80,32 @@ public class Interaction : MonoBehaviour
             //Debug.Log("hi!");
             rightIdx = Gesture.gen.righthandpos[8];
             rightThumb = Gesture.gen.righthandpos[4];
- 
-            pinchedPosition = new Vector2(Gesture.gen.righthandpos[8].x, Gesture.gen.righthandpos[8].y);
+
+            pinchedPosition = new Vector3(0, 0, 0);
+
+            pinchedPosition = new Vector3(Gesture.gen.righthandpos[8].x, Gesture.gen.righthandpos[8].y, 10f );
 
            // Debug.Log("moving");
             if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.1f)
             {
                 isPinched = true;
                
-                if ((pinchedPosition - objects[0]).magnitude < 0.3f)
+                if ((pinchedPosition - objects[0]).magnitude < 0.2f)
                 {
-                    applesprite.transform.position = new Vector2(pinchedPosition.x, pinchedPosition.y);
+                    applesprite.transform.position = new Vector3(-pinchedPosition.x, -pinchedPosition.y, 12f);
                     Debug.Log("hi!");
 
                 }
-                else if ((pinchedPosition - objects[1]).magnitude < 0.3f)
+                else if ((pinchedPosition - objects[1]).magnitude < 0.2f)
                 {
                     
-                    bonesprite.transform.position = new Vector2(pinchedPosition.x, pinchedPosition.y);
+                    bonesprite.transform.position = new Vector3(-pinchedPosition.x, -pinchedPosition.y, 12f);
 
                 }
-                else if ((pinchedPosition - objects[2]).magnitude < 0.3f)
+                else if ((pinchedPosition - objects[2]).magnitude < 0.2f)
                 {
                    
-                    ribsprite.transform.position = new Vector2(pinchedPosition.x, pinchedPosition.y);
+                    ribsprite.transform.position = new Vector3(-pinchedPosition.x, -pinchedPosition.y, 12f);
 
                 }
                 
