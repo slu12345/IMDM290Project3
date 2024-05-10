@@ -25,16 +25,16 @@ public class ScreenDivider1 : MonoBehaviour
     float sq15;
     float sq16;
 
-    public Vector2[] objects = new Vector2[numberofObj];
+    //public Vector2[] objects = new Vector2[numberofObj];
     // public static Vector2[] objects = new Vector2[numberofObj];
 
 
     void Start()
     {
         // objects
-        objects[0] = new Vector2(-0.5f, 1.52f); // apple
+        /*objects[0] = new Vector2(-0.5f, 1.52f); // apple
         objects[1] = new Vector2(1f, -1.14f); // bone 
-        objects[2] = new Vector2(0.54f, 0.47f); // ribs
+        objects[2] = new Vector2(0.54f, 0.47f); // ribs*/
 
 
 

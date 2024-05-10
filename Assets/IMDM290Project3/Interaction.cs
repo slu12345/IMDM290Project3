@@ -9,10 +9,29 @@ public class Interaction : MonoBehaviour
     private Vector3 leftThumb;
     public Vector2 pinchedPosition;
     public bool isPinched;
+    public static int numberofObj = 3;
+    public Vector2[] objects = new Vector2[numberofObj];
     public static Interaction interact;
+    public GameObject apple;
+    
+    public Vector2 apple;
+    float applex;
+    float appley;
+    public Vector2 bone;
+    float bonex;
+    float boney;
+    public Vector2 ribs;
+    float ribsx;
+    float ribsy;
     // Start is called before the first frame update
+
+
+
     private void Awake()
     {
+
+         
+
         if (Interaction.interact == null)
         {
             Interaction.interact = this;
@@ -20,23 +39,43 @@ public class Interaction : MonoBehaviour
     }
         void Start()
     {
-        
-       /* GameObject skelObj = GameObject.Find("Skeleton");
 
-        if(skelObj == null)
-        {
-            Debug.Log("Not working");
-        } 
-        else
-        {
-            skel = skelObj.GetComponent<Skeleton>();
-            Debug.Log("working");
-        }*/
- 
-    
+        applex = GameObject.Find("bad apple").transform.position.x;
+        appley = GameObject.Find("bad apple").transform.position.y;
 
-    // Update is called once per frame
-    void Update()
+        apple = new Vector2(applex, appley);
+
+        bonex = GameObject.Find("funny bone").transform.position.x;
+        boney = GameObject.Find("funny bone").transform.position.y;
+
+        bone = new Vector2(bonex, boney);
+
+        ribsx = GameObject.Find("broken ribs").transform.position.x;
+        ribsy = GameObject.Find("broken ribs").transform.position.y;
+
+        ribs = new Vector2(ribsx, ribsy);
+
+        objects[0] = apple; // apple
+        objects[1] = bone; // bone 
+        objects[2] = ribs; // ribs
+
+
+        /* GameObject skelObj = GameObject.Find("Skeleton");
+
+         if(skelObj == null)
+         {
+             Debug.Log("Not working");
+         } 
+         else
+         {
+             skel = skelObj.GetComponent<Skeleton>();
+             Debug.Log("working");
+         }*/
+
+
+
+        // Update is called once per frame
+        void Update()
         {
 
             rightIdx = Gesture.gen.righthandpos[8];
@@ -63,21 +102,21 @@ public class Interaction : MonoBehaviour
 
             //if (index)
 
-            GameObject.Find("objects");
+           // GameObject.Find("objects");
 
 
 
-            if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.03f)
+            if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.5f)
             {
                 isPinched = true;
                 pinchedPosition = new Vector2(Gesture.gen.righthandpos[8].x, Gesture.gen.righthandpos[8].y);
 
                 //ScreenDivider.gen.objects[];
 
-                if ((pinchedPosition - ScreenDivider1.Vector2.objects[0]).magnitude < 0.03f)
+                if ((pinchedPosition - objects[0]).magnitude < 0.03f)
                 {
-                    ScreenDivider1.Vector2.objects[0] = pinchedPosition;
-                    //  ScreenDivider1.objects[0] = pinchedPosition;
+                    apple.position = pinchedPosition;
+                    //  ScreenDivider1.objects[0] = pinchedPosition;  
 
                 }
 
@@ -94,9 +133,9 @@ public class Interaction : MonoBehaviour
 
                 //ScreenDivider.gen.objects[];
 
-                if ((pinchedPosition - ScreenDivider1.Vector2.objects[1]).magnitude < 0.03f)
+                if ((pinchedPosition - objects[1]).magnitude < 0.03f)
                 {
-                    ScreenDivider1.objects[1] = pinchedPosition;
+                    objects[1] = pinchedPosition;
                     //  ScreenDivider1.objects[1] = pinchedPosition;
 
                 }
@@ -114,9 +153,9 @@ public class Interaction : MonoBehaviour
 
                 //ScreenDivider.gen.objects[];
 
-                if ((pinchedPosition - ScreenDivider1.Vector2.objects[2]).magnitude < 0.03f)
+                if ((pinchedPosition - objects[2]).magnitude < 0.03f)
                 {
-                    ScreenDivider1.objects[2] = pinchedPosition;
+                    objects[2] = pinchedPosition;
                     // ScreenDivider1.objects[2] = pinchedPosition;
 
                 }
