@@ -75,7 +75,7 @@ public class Skeleton : MonoBehaviour
         if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.03f) // if right hand is pinched, do~
         {
             isPinched= true;
-            Debug.Log("Pinched!");
+            //Debug.Log("Pinched!");
         } 
         else
         {

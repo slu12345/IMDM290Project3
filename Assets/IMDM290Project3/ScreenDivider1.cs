@@ -7,7 +7,7 @@ public class ScreenDivider1 : MonoBehaviour
     float[,] finalValues;
     const int cornerNum = 4;
     const int smallerSections = 4;
-    public static int numberofObj = 3;
+    
     float sq1;
     float sq2;
     float sq3;
