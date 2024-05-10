@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class ScreenDivider1 : MonoBehaviour
@@ -60,7 +59,7 @@ public class ScreenDivider1 : MonoBehaviour
 
         byte[] pixels = texture.GetRawTextureData();
 
-        for (int row = 0; row < texture.height / 4; ++row)
+       /* for (int row = 0; row < texture.height / 4; ++row)
         {
             int rowOffset = texture.width * row * 4;
 
@@ -170,7 +169,7 @@ public class ScreenDivider1 : MonoBehaviour
                 int pixelIndex = rowOffset + col * 4;
                 sq16 = pixelIndex;
             }
-        }
+        }*/
 
         values[0] = sq1;
         values[1] = sq2;
