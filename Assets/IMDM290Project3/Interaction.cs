@@ -86,26 +86,26 @@ public class Interaction : MonoBehaviour
             pinchedPosition = new Vector3(Gesture.gen.righthandpos[8].x, Gesture.gen.righthandpos[8].y, 10f );
 
            // Debug.Log("moving");
-            if ((Gesture.gen.righthandpos[8] - Gesture.gen.righthandpos[4]).magnitude < 0.1f)
+            if ((rightIdx - rightThumb).magnitude < 0.1f)
             {
                 isPinched = true;
                
                 if ((pinchedPosition - objects[0]).magnitude < 0.2f)
                 {
-                    applesprite.transform.position = new Vector3(-pinchedPosition.x, -pinchedPosition.y, 12f);
+                    applesprite.transform.position = new Vector3(-pinchedPosition.x, -pinchedPosition.y, 11f);
                     Debug.Log("hi!");
 
                 }
                 else if ((pinchedPosition - objects[1]).magnitude < 0.2f)
                 {
                     
-                    bonesprite.transform.position = new Vector3(-pinchedPosition.x, -pinchedPosition.y, 12f);
+                    bonesprite.transform.position = new Vector3(-pinchedPosition.x, -pinchedPosition.y, 11f);
 
                 }
                 else if ((pinchedPosition - objects[2]).magnitude < 0.2f)
                 {
                    
-                    ribsprite.transform.position = new Vector3(-pinchedPosition.x, -pinchedPosition.y, 12f);
+                    ribsprite.transform.position = new Vector3(-pinchedPosition.x, -pinchedPosition.y, 11f);
 
                 }
                 
