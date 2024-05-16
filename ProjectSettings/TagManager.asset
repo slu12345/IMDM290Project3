@@ -42,3 +42,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Skeleton
+    uniqueID: 3408427305
+    locked: 0
